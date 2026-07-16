@@ -6,13 +6,13 @@ engine remains the only owner of schedule, progress, result, persistence, and re
 
 ## Install
 
-Install the private packages together after their repositories and catalog rows are published:
+Install the public packages together after their repositories and catalog rows are published:
 
 ```json
 {
   "dependencies": {
-    "com.actionfit.match-rival": "https://github.com/ActionFitGames/MatchRival.git#0.1.1",
-    "com.actionfit.match-rival.ui": "https://github.com/ActionFitGames/MatchRivalUI.git#0.1.0"
+    "com.actionfit.match-rival": "https://github.com/ActionFit-Editor/MatchRival.git#0.1.1",
+    "com.actionfit.match-rival.ui": "https://github.com/ActionFit-Editor/MatchRivalUI.git#0.1.1"
   }
 }
 ```

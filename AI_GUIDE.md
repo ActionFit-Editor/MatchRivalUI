@@ -4,9 +4,9 @@
 
 - Package ID: `com.actionfit.match-rival.ui`
 - Display name: ActionFit Match Rival UI
-- Repository candidate: `https://github.com/ActionFitGames/MatchRivalUI.git`
-- Repository visibility: Private
-- Current package version at generation time: `0.1.0`
+- Repository: `https://github.com/ActionFit-Editor/MatchRivalUI.git`
+- Repository visibility: Public
+- Current package version at generation time: `0.1.1`
 - Unity version: `6000.2`
 
 ## Scope
