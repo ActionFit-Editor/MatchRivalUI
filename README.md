@@ -11,13 +11,13 @@ Install the public packages together after their repositories and catalog rows a
 ```json
 {
   "dependencies": {
-    "com.actionfit.match-rival": "https://github.com/ActionFit-Editor/MatchRival.git#0.1.1",
-    "com.actionfit.match-rival.ui": "https://github.com/ActionFit-Editor/MatchRivalUI.git#0.1.1"
+    "com.actionfit.match-rival": "https://github.com/ActionFit-Editor/MatchRival.git#0.1.3",
+    "com.actionfit.match-rival.ui": "https://github.com/ActionFit-Editor/MatchRivalUI.git#0.1.2"
   }
 }
 ```
 
-This package directly depends on Content Core, Match Rival, ReferenceBinding 0.1.1,
+This package directly depends on Content Core 0.2.1, Match Rival 0.1.3, ReferenceBinding 0.1.1,
 UI Foundation 1.0.5, and UGUI 2.0.0.
 
 ## Standalone flow
