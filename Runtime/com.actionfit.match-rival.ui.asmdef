@@ -1,0 +1,21 @@
+{
+  "name": "com.actionfit.match-rival.ui",
+  "rootNamespace": "ActionFit.MatchRival.UI",
+  "references": [
+    "com.actionfit.content-core",
+    "com.actionfit.match-rival",
+    "com.actionfit.referencebinding",
+    "com.actionfit.ui.foundation",
+    "Unity.TextMeshPro",
+    "UnityEngine.UI"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

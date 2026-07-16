@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5ab7e2b67b436db878fd7b023d8616, type: 3}
+  m_Name: ActionFitPackageInfo_SO
+  m_EditorClassIdentifier: 
+  _packageId: com.actionfit.match-rival.ui
+  _displayName: ActionFit Match Rival UI
+  _repoName: MatchRivalUI
+  _repositoryVisibility: 1
+  _owner: ActionFit
+  _status: candidate
+  _description: "MatchRival \uC5D4\uC9C4 \uC0C1\uD0DC\uB97C \uBD88\uBCC0 \uBDF0 \uBAA8\uB378\uB85C
+    \uD22C\uC601\uD558\uACE0 UI Foundation\uC73C\uB85C \uD45C\uC2DC\uD558\uB294 \uBE44\uACF5\uAC1C
+    \uC120\uD0DD\uD615 UI \uD328\uD0A4\uC9C0 \uD6C4\uBCF4\uC785\uB2C8\uB2E4."
+  _releaseNote: "|- - \uC774\uBCA4\uD2B8 \uC2DC\uC791\uBD80\uD130 \uB9E4\uCE58, \uD29C\uD1A0\uB9AC\uC5BC,
+    \uC2B9\uD328, \uB77C\uC6B4\uB4DC\xB7\uBC15\uC2A4 \uBCF4\uC0C1, \uC774\uBCA4\uD2B8
+    \uC885\uB8CC\uAE4C\uC9C0 \uC911\uB9BD \uD504\uB808\uC820\uD14C\uC774\uC158 \uD750\uB984\uC744
+    \uC81C\uACF5\uD569\uB2C8\uB2E4. - UI \uC785\uB825\uC740 \uACF5\uAC1C `MatchRivalEngine`
+    \uBA85\uB839\uC73C\uB85C\uB9CC \uC804\uB2EC\uD558\uBA70 \uC77C\uC815, \uACB0\uACFC,
+    \uC800\uC7A5\uACFC \uBCF4\uC0C1 \uAD8C\uC704 \uC0C1\uD0DC\uB97C UI\uC5D0 \uBCF5\uC81C\uD558\uC9C0
+    \uC54A\uC2B5\uB2C8\uB2E4. - localization, audio, profile, reward renderer, animation,
+    clock display, view host\uB97C \uC18C\uBE44 \uD504\uB85C\uC81D\uD2B8\uAC00 \uAD50\uCCB4\uD560
+    \uC218 \uC788\uC2B5\uB2C8\uB2E4. - \uBAA8\uB4E0 \uD328\uD0A4\uC9C0 `Refs` \uD544\uB4DC\uC5D0
+    `RequiredReference`\uC640 \uC815\uD655\uD55C \uC774\uB984\uC758 `AutoWireChild`\uB97C
+    \uC801\uC6A9\uD558\uACE0 Editor \uC804\uC6A9 \uAC80\uC99D \uC694\uCCAD\uC744
+    \uC81C\uACF5\uD569\uB2C8\uB2E4."
+  _dependenciesOverride: 

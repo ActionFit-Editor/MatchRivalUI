@@ -1,0 +1,18 @@
+{
+  "name": "com.actionfit.match-rival.ui.Editor",
+  "rootNamespace": "ActionFit.MatchRival.UI.Editor",
+  "references": [
+    "com.actionfit.match-rival.ui"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

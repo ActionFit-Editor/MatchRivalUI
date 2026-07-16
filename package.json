@@ -1,0 +1,17 @@
+{
+  "name": "com.actionfit.match-rival.ui",
+  "version": "0.1.0",
+  "displayName": "ActionFit Match Rival UI",
+  "description": "Project-neutral UI Foundation presentation and standalone bootstrap for ActionFit Match Rival.",
+  "unity": "6000.2",
+  "author": {
+    "name": "ActionFit"
+  },
+  "dependencies": {
+    "com.actionfit.content-core": "0.2.0",
+    "com.actionfit.match-rival": "0.1.1",
+    "com.actionfit.referencebinding": "0.1.1",
+    "com.actionfit.ui.foundation": "1.0.5",
+    "com.unity.ugui": "2.0.0"
+  }
+}
