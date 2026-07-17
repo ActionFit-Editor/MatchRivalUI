@@ -162,12 +162,12 @@ namespace ActionFit.MatchRival.UI
         public bool IsInitialized => _initialized;
         public Refs InspectorReferences => refs;
 
+#if UNITY_EDITOR
         private void OnValidate()
         {
-#if UNITY_EDITOR
             ReferenceBindingRequests.Enqueue(this);
-#endif
         }
+#endif
 
         private void OnDisable()
         {

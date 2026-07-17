@@ -1,11 +1,16 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using ActionFit.Content;
 using NUnit.Framework;
 using ReferenceBinding;
+using UnityEditor;
+using UnityEditor.Build.Player;
 using UnityEngine;
+using UnityEngine.TestTools;
 
 namespace ActionFit.MatchRival.UI.Tests
 {
@@ -262,6 +267,49 @@ namespace ActionFit.MatchRival.UI.Tests
             Assert.That(references, Does.Not.Contain("DOTween"));
             Assert.That(references, Does.Not.Contain("UniTask"));
             Assert.That(references.Any(name => name.Contains("Addressables", StringComparison.Ordinal)), Is.False);
+        }
+
+        [Test]
+        public void PlayerCompiledAssembly_ExcludesEditorOnlyOnValidateAndRequestCall()
+        {
+            string outputDirectory = Path.Combine(
+                Path.GetTempPath(),
+                "ActionFitMatchRivalPlayerScripts-" + Guid.NewGuid().ToString("N"));
+            Directory.CreateDirectory(outputDirectory);
+            bool previousIgnoreFailingMessages = LogAssert.ignoreFailingMessages;
+            LogAssert.ignoreFailingMessages = true;
+
+            try
+            {
+                BuildTarget target = EditorUserBuildSettings.activeBuildTarget;
+                var settings = new ScriptCompilationSettings
+                {
+                    target = target,
+                    group = BuildPipeline.GetBuildTargetGroup(target),
+                    options = ScriptCompilationOptions.None
+                };
+                ScriptCompilationResult result = PlayerBuildInterface.CompilePlayerScripts(
+                    settings,
+                    outputDirectory);
+                string assemblyPath = result.assemblies.Single(path =>
+                    string.Equals(
+                        Path.GetFileName(path),
+                        "com.actionfit.match-rival.ui.dll",
+                        StringComparison.Ordinal));
+                if (!Path.IsPathRooted(assemblyPath))
+                    assemblyPath = Path.Combine(outputDirectory, assemblyPath);
+                string assemblyMetadata = Encoding.UTF8.GetString(File.ReadAllBytes(assemblyPath));
+
+                Assert.That(assemblyMetadata, Does.Contain(nameof(MatchRivalPresentation)));
+                Assert.That(assemblyMetadata, Does.Not.Contain("OnValidate"));
+                Assert.That(assemblyMetadata, Does.Not.Contain(nameof(ReferenceBindingRequests)));
+            }
+            finally
+            {
+                LogAssert.ignoreFailingMessages = previousIgnoreFailingMessages;
+                if (Directory.Exists(outputDirectory))
+                    Directory.Delete(outputDirectory, true);
+            }
         }
 
         [Test]
