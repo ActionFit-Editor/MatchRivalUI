@@ -12,7 +12,7 @@ Install the public packages together after their repositories and catalog rows a
 {
   "dependencies": {
     "com.actionfit.match-rival": "https://github.com/ActionFit-Editor/MatchRival.git#0.1.3",
-    "com.actionfit.match-rival.ui": "https://github.com/ActionFit-Editor/MatchRivalUI.git#0.1.3"
+    "com.actionfit.match-rival.ui": "https://github.com/ActionFit-Editor/MatchRivalUI.git#0.1.4"
   }
 }
 ```
