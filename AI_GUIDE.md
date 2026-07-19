@@ -6,7 +6,7 @@
 - Display name: ActionFit Match Rival UI
 - Repository: `https://github.com/ActionFit-Editor/MatchRivalUI.git`
 - Repository visibility: Public
-- Current package version at generation time: `0.1.6`
+- Current package version at generation time: `0.2.0`
 - Unity version: `6000.2`
 
 ## Scope
@@ -22,6 +22,7 @@ behavior.
 - Only this optional UI layer may depend on UI Foundation, ReferenceBinding, and UGUI.
 - Do not add Cat Merge types, `Main`, Addressables, project assets, DOTween, or UniTask.
 - Project adapters may depend on this package; this package never depends on `Assembly-CSharp`.
+- Tests and runtime integrations invoke `UI_Button` through its pointer/listener contract and must not use the removed native `UI_Button.Button` accessor.
 
 ## Refs contract
 

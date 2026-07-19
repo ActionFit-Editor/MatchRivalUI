@@ -10,6 +10,7 @@ using ReferenceBinding;
 using UnityEditor;
 using UnityEditor.Build.Player;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.TestTools;
 
 namespace ActionFit.MatchRival.UI.Tests
@@ -331,7 +332,10 @@ namespace ActionFit.MatchRival.UI.Tests
                 .FirstOrDefault(candidate => string.Equals(candidate.gameObject.name, objectName, StringComparison.Ordinal));
             Assert.That(button, Is.Not.Null, objectName);
             Assert.That(button.gameObject.activeSelf, Is.True, objectName);
-            button.Button.onClick.Invoke();
+            button.OnPointerClick(new PointerEventData(null)
+            {
+                button = PointerEventData.InputButton.Left,
+            });
         }
 
         private static MatchRivalUIViewModel CreateModel(

@@ -9,13 +9,13 @@
 ```json
 {
   "dependencies": {
-    "com.actionfit.match-rival": "https://github.com/ActionFit-Editor/MatchRival.git#0.1.3",
-    "com.actionfit.match-rival.ui": "https://github.com/ActionFit-Editor/MatchRivalUI.git#0.1.6"
+    "com.actionfit.match-rival": "https://github.com/ActionFit-Editor/MatchRival.git#0.1.6",
+    "com.actionfit.match-rival.ui": "https://github.com/ActionFit-Editor/MatchRivalUI.git#0.2.0"
   }
 }
 ```
 
-이 패키지는 Content Core 0.2.1, Match Rival 0.1.3, ReferenceBinding 0.1.2, UI Foundation 1.0.5와 UGUI 2.0.0에 직접 의존합니다.
+이 패키지는 Content Core 0.2.3, Match Rival 0.1.6, ReferenceBinding 0.1.3, UI Foundation 2.0.0과 UGUI 2.0.0에 직접 의존합니다.
 
 ## 독립 실행 흐름
 
@@ -29,6 +29,7 @@
 - `Refs` 필드는 private 직렬화 하위 Component입니다. 모든 필드는 안정적인 `RequiredReference` 코드와 정확한 이름의 `AutoWireChild`를 사용합니다.
 - AutoWire는 Editor 제작 보조 기능입니다. 런타임 프레젠테이션은 이름으로 자식을 검색하지 않습니다.
 - CI와 audit은 ReferenceBinding 읽기 전용 검증만 사용하며 참조를 적용하거나 저장하면 안 됩니다.
+- 버튼 입력은 `UI_Button`의 포인터 이벤트 API를 사용하며 제거된 native `Button` 접근자에 의존하지 않습니다.
 
 이 패키지는 의도적으로 DOTween, UniTask, Addressables, `Main`, 프로젝트 현지화, 프로젝트 사운드, 프로젝트 프로필, 프로젝트 인벤토리 또는 `Assembly-CSharp` 의존성을 갖지 않습니다.
 
