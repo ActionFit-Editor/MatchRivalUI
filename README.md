@@ -10,7 +10,7 @@
 {
   "dependencies": {
     "com.actionfit.match-rival": "https://github.com/ActionFit-Editor/MatchRival.git#0.2.0",
-    "com.actionfit.match-rival.ui": "https://github.com/ActionFit-Editor/MatchRivalUI.git#0.3.0"
+    "com.actionfit.match-rival.ui": "https://github.com/ActionFit-Editor/MatchRivalUI.git#0.3.1"
   }
 }
 ```
