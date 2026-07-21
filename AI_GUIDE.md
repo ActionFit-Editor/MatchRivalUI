@@ -6,13 +6,13 @@
 - Display name: ActionFit Match Rival UI
 - Repository: `https://github.com/ActionFit-Editor/MatchRivalUI.git`
 - Repository visibility: Public
-- Current package version at generation time: `0.2.0`
+- Current package version at generation time: `0.3.0`
 - Unity version: `6000.2`
 
 ## Scope
 
-This package owns the optional project-neutral MatchRival UI projection, UI Foundation
-presentation, replaceable UI services, and standalone demo bootstrap. Read
+This package owns the optional project-neutral MatchRival UI projection, complete additive original
+production prefab/image baseline, UI Foundation presentation, replaceable UI services, and standalone demo bootstrap. Read
 `Packages/com.actionfit.match-rival/AI_GUIDE.md` before changing authoritative gameplay or reward
 behavior.
 
@@ -23,6 +23,8 @@ behavior.
 - Do not add Cat Merge types, `Main`, Addressables, project assets, DOTween, or UniTask.
 - Project adapters may depend on this package; this package never depends on `Assembly-CSharp`.
 - Tests and runtime integrations invoke `UI_Button` through its pointer/listener contract and must not use the removed native `UI_Button.Button` accessor.
+- Original baseline bytes, importer settings, source mappings, and package SHA-256 values are recorded in `Documentation~/MigrationCoverage.md` and `AssetProvenance.md`.
+- Never generate, redraw, synthesize, consolidate, omit, or automatically substitute production art. Project-only MonoBehaviour GUIDs are excluded from the clean-package prefab copy.
 
 ## Refs contract
 
@@ -46,4 +48,4 @@ behavior.
 
 Requested router entry:
 
-- `Packages/com.actionfit.match-rival.ui/AI_GUIDE.md` - ActionFit Match Rival UI owns the optional UI Foundation presentation, strict ReferenceBinding Refs contract, replaceable services, and standalone engine-backed demo.
+- `Packages/com.actionfit.match-rival.ui/AI_GUIDE.md` - ActionFit Match Rival UI owns the original production prefab/image baseline, optional UI Foundation presentation, strict ReferenceBinding Refs contract, replaceable services, and standalone engine-backed demo.

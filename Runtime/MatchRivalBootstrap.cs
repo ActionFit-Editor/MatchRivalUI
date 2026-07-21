@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using ActionFit.Content;
+using ActionFit.Time;
 using UnityEngine;
 
 namespace ActionFit.MatchRival.UI
@@ -40,8 +41,8 @@ namespace ActionFit.MatchRival.UI
 
         private void Update()
         {
-            if (!IsVisible || Time.unscaledTime < _nextRefreshTime) return;
-            _nextRefreshTime = Time.unscaledTime + _presentation.Config.RefreshIntervalSeconds;
+            if (!IsVisible || UnityEngine.Time.unscaledTime < _nextRefreshTime) return;
+            _nextRefreshTime = UnityEngine.Time.unscaledTime + _presentation.Config.RefreshIntervalSeconds;
             _engine.EvaluateTimeout();
             Render();
         }
@@ -130,19 +131,21 @@ namespace ActionFit.MatchRival.UI
 
         public static MatchRivalEngine CreateDefaultEngine(string contentId = DefaultDemoContentId)
         {
-            var clock = new SystemMatchRivalClock();
+            IClock clock = SystemClock.Instance;
             MatchRivalCatalog catalog = CreateDemoCatalog();
             return new MatchRivalEngine(
                 new PlayerPrefsContentStateStore(),
                 new PlayerPrefsContentRewardService("com.actionfit.match-rival.ui.demo-rewards"),
                 new SingleCatalogResolver(catalog),
                 clock,
+                TimeZoneInfo.Local,
+                TimeZoneInfo.Local,
                 new SystemMatchRivalRandom(),
                 new LinearMatchRivalProgressCurveProvider(),
                 new DefaultMatchRivalOpponentProvider(),
                 string.IsNullOrWhiteSpace(contentId) ? DefaultDemoContentId : contentId,
                 new AllowMatchRivalAccessPolicy(),
-                new DemoSchedulePolicy(clock));
+                new DemoSchedulePolicy());
         }
 
         private void HandleStateChanged(MatchRivalState state)
@@ -342,16 +345,9 @@ namespace ActionFit.MatchRival.UI
 
         private sealed class DemoSchedulePolicy : IMatchRivalSchedulePolicy
         {
-            private readonly IMatchRivalClock _clock;
-
-            public DemoSchedulePolicy(IMatchRivalClock clock)
-            {
-                _clock = clock ?? throw new ArgumentNullException(nameof(clock));
-            }
-
             public bool IsEnabled => true;
             public bool IsActiveDay(DayOfWeek dayOfWeek) => true;
-            public DateTime GetActiveWindowEnd(DateTime now) => _clock.Now.AddDays(7d);
+            public DateTime GetActiveWindowEnd(DateTime now) => now.AddDays(7d);
         }
     }
 }

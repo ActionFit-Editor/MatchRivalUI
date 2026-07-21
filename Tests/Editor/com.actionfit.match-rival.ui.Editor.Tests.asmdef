@@ -6,6 +6,7 @@
     "com.actionfit.match-rival",
     "com.actionfit.match-rival.ui",
     "com.actionfit.referencebinding",
+    "com.actionfit.time",
     "com.actionfit.ui.foundation",
     "UnityEngine.UI"
   ],
