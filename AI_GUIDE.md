@@ -6,7 +6,7 @@
 - Display name: ActionFit Match Rival UI
 - Repository: `https://github.com/ActionFit-Editor/MatchRivalUI.git`
 - Repository visibility: Public
-- Current package version at generation time: `0.3.1`
+- Current package version at generation time: `0.3.2`
 - Unity version: `6000.2`
 
 ## Scope
@@ -25,6 +25,7 @@ behavior.
 - Tests and runtime integrations invoke `UI_Button` through its pointer/listener contract and must not use the removed native `UI_Button.Button` accessor.
 - Original baseline bytes, importer settings, source mappings, and package SHA-256 values are recorded in `Documentation~/MigrationCoverage.md` and `AssetProvenance.md`.
 - Version `0.3.1` disables the TMP Bold style in `Runtime/Prefabs/Icon/UI_MatchRival_Cell.prefab` and enables Extra Padding on every packaged TMP component while preserving hierarchy, references, text, materials, and GUIDs.
+- Version `0.3.2` disables `Maskable` only on the five staged tutorial `TextMeshProUGUI` components in `Runtime/Prefabs/Popup/UI_MatchRival_Match.prefab`. This bypasses incompatible SoftMask material replacement while preserving the packaged legacy localization event, authored SoftMask parent, hierarchy, references, and progression behavior; the project production prefab keeps its `UI_Text` localization and outline settings.
 - Never generate, redraw, synthesize, consolidate, omit, or automatically substitute production art. Project-only MonoBehaviour GUIDs are excluded from the clean-package prefab copy.
 
 ## Refs contract

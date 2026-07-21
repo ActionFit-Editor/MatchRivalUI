@@ -9,3 +9,5 @@ Project-owned MonoBehaviours are not redistributed as hidden project dependencie
 The dependency closure additionally copies 44 referenced non-script assets beneath `Runtime/ProductionDependencies` and deterministically remaps their references.
 
 AI-generated, synthesized, placeholder, redrawn, consolidated, and automatically substituted assets are prohibited. If any original cannot be included, packaging stops for an explicit per-asset decision.
+
+Version `0.3.2` keeps the project and package Match prefabs aligned while intentionally setting only `Txt_Tutorial1` through `Txt_Tutorial5` to `Maskable = false`. The package's legacy localization event and the project prefab's `UI_Text` localization/outline configuration remain unchanged, as do the authored parent SoftMask, hierarchy, references, and staged tutorial behavior.
