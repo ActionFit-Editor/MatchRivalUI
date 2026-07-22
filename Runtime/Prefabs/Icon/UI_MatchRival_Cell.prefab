@@ -1237,8 +1237,8 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2341927441417369464, guid: b69c0b518da5e35481577b5de29bbb96, type: 3}
   m_PrefabInstance: {fileID: 1707613252932239564}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &5734884522646094808 stripped
-Animator:
+--- !u!114 &5734884522646094808 stripped
+MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6351428021986149140, guid: b69c0b518da5e35481577b5de29bbb96, type: 3}
   m_PrefabInstance: {fileID: 1707613252932239564}
   m_PrefabAsset: {fileID: 0}
