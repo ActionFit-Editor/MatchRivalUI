@@ -21,9 +21,8 @@ MonoBehaviour:
   _description: "MatchRival \uC5D4\uC9C4 \uC0C1\uD0DC\uB97C \uBD88\uBCC0 \uBDF0 \uBAA8\uB378\uB85C
     \uD22C\uC601\uD558\uACE0 UI Foundation\uC73C\uB85C \uD45C\uC2DC\uD558\uB294 \uACF5\uAC1C
     \uC120\uD0DD\uD615 UI \uD328\uD0A4\uC9C0 \uD6C4\uBCF4\uC785\uB2C8\uB2E4."
-  _releaseNote: "- MatchRival Maplestory SDF/material\uC744 shared font package\uB85C
-    GUID \uBCF4\uC874 \uC774\uC804\uD588\uC2B5\uB2C8\uB2E4.\n- authored \uC124\uC815\uACFC
-    prefab \uCC38\uC870\uB97C \uC720\uC9C0\uD558\uACE0 canonical Bold source\uB97C
-    \uC0AC\uC6A9\uD569\uB2C8\uB2E4.\n- Caution: font rights \uC2B9\uC778 \uC804 package
-    publish, Git tag\uC640 catalog \uB4F1\uB85D\uC740 \uAE08\uC9C0\uD569\uB2C8\uB2E4."
-  _dependenciesOverride: 
+  _releaseNote: "- `com.actionfit.referencebinding@0.2.2` package-owned Editor pump\uB85C
+    \uC804\uD658\uD558\uACE0 enqueue \uC804\uC6A9 `OnValidate`\uB97C \uC81C\uAC70\uD588\uC2B5\uB2C8\uB2E4.\n-
+    prefab, \uC9C1\uB82C\uD654 \uCC38\uC870, GUID\uC640 \uB7F0\uD0C0\uC784 \uB3D9\uC791\uC740
+    \uBCC0\uACBD\uD558\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4."
+  _dependenciesOverride: com.actionfit.content-core@0.2.3;com.actionfit.fonts.maplestory@1.0.0;com.actionfit.match-rival@0.2.0;com.actionfit.referencebinding@0.2.2;com.actionfit.time@1.0.4;com.actionfit.ui.foundation@2.0.5;com.unity.ugui@2.0.0

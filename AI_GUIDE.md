@@ -6,7 +6,7 @@
 - Display name: ActionFit Match Rival UI
 - Repository: `https://github.com/ActionFit-Editor/MatchRivalUI.git`
 - Repository visibility: Public
-- Current package version at generation time: `0.3.4`
+- Current package version at generation time: `0.3.5`
 - Unity version: `6000.2`
 
 ## Scope
@@ -28,6 +28,7 @@ behavior.
 - Version `0.3.2` disables `Maskable` only on the five staged tutorial `TextMeshProUGUI` components in `Runtime/Prefabs/Popup/UI_MatchRival_Match.prefab`. This bypasses incompatible SoftMask material replacement while preserving the packaged legacy localization event, authored SoftMask parent, hierarchy, references, and progression behavior; the project production prefab keeps its `UI_Text` localization and outline settings.
 - Version `0.3.3` replaces the production-dependency Indicator Animator with UI Foundation `ScalePulse` while preserving its component fileID, hierarchy, baseline Transform, art, and nested prefab references.
 - Version `0.3.4` declares `com.actionfit.fonts.maplestory@1.0.0`; its preserved SDF/material GUIDs now resolve from the shared package and use the one canonical Bold source. Do not restore package-local font binaries.
+- Version `0.3.5` pins `com.actionfit.referencebinding@0.2.2` and relies on its package-owned Editor pump instead of a presentation-owned enqueue-only `OnValidate`. Prefab, serialized reference, GUID, and runtime behavior remain unchanged.
 - Never generate, redraw, synthesize, consolidate, omit, or automatically substitute production art. Project-only MonoBehaviour GUIDs are excluded from the clean-package prefab copy.
 
 ## Refs contract
@@ -36,7 +37,7 @@ behavior.
 - Fields are private `[SerializeField]` values with getter-only properties.
 - Each field has unique `[RequiredReference("...")]` and exact ordinal
   `[AutoWireChild("GameObjectName")]` attributes.
-- Owners enqueue `ReferenceBindingRequests.Enqueue(this)` only inside `#if UNITY_EDITOR`.
+- The ReferenceBinding package-owned Editor pump discovers and processes these owners without consumer `OnValidate`.
 - `Assets` owns external assets and prefab assets; `Settings` owns scalars and configuration.
 - AutoWire is Editor-only authoring support. Validation is read-only and never applies or saves.
 
