@@ -21,5 +21,9 @@ MonoBehaviour:
   _description: "MatchRival \uC5D4\uC9C4 \uC0C1\uD0DC\uB97C \uBD88\uBCC0 \uBDF0 \uBAA8\uB378\uB85C
     \uD22C\uC601\uD558\uACE0 UI Foundation\uC73C\uB85C \uD45C\uC2DC\uD558\uB294 \uACF5\uAC1C
     \uC120\uD0DD\uD615 UI \uD328\uD0A4\uC9C0 \uD6C4\uBCF4\uC785\uB2C8\uB2E4."
-  _releaseNote: "- production-dependency Indicator의 Animator를 UI Foundation `ScalePulse`로 교체해 별도 Animator Controller 없이 공용 펄스를 사용합니다.\n- 기존 component fileID와 GameObject 연결을 유지해 `UI_MatchRival_Cell.prefab`의 nested prefab 참조가 끊기지 않습니다.\n- UI Foundation 의존성을 `2.0.5`로 고정해 새 `ScalePulse` 스크립트가 독립 설치에서도 정상 해석됩니다.\n- 계층, 기준 Transform, 아트와 기존 Match Rival UI 동작은 변경하지 않았습니다.\n- Caution: 소비 프로젝트는 UI Foundation `2.0.5` 이상과 함께 설치해야 합니다."
+  _releaseNote: "- MatchRival Maplestory SDF/material\uC744 shared font package\uB85C
+    GUID \uBCF4\uC874 \uC774\uC804\uD588\uC2B5\uB2C8\uB2E4.\n- authored \uC124\uC815\uACFC
+    prefab \uCC38\uC870\uB97C \uC720\uC9C0\uD558\uACE0 canonical Bold source\uB97C
+    \uC0AC\uC6A9\uD569\uB2C8\uB2E4.\n- Caution: font rights \uC2B9\uC778 \uC804 package
+    publish, Git tag\uC640 catalog \uB4F1\uB85D\uC740 \uAE08\uC9C0\uD569\uB2C8\uB2E4."
   _dependenciesOverride: 

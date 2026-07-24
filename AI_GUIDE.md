@@ -6,7 +6,7 @@
 - Display name: ActionFit Match Rival UI
 - Repository: `https://github.com/ActionFit-Editor/MatchRivalUI.git`
 - Repository visibility: Public
-- Current package version at generation time: `0.3.3`
+- Current package version at generation time: `0.3.4`
 - Unity version: `6000.2`
 
 ## Scope
@@ -27,6 +27,7 @@ behavior.
 - Version `0.3.1` disables the TMP Bold style in `Runtime/Prefabs/Icon/UI_MatchRival_Cell.prefab` and enables Extra Padding on every packaged TMP component while preserving hierarchy, references, text, materials, and GUIDs.
 - Version `0.3.2` disables `Maskable` only on the five staged tutorial `TextMeshProUGUI` components in `Runtime/Prefabs/Popup/UI_MatchRival_Match.prefab`. This bypasses incompatible SoftMask material replacement while preserving the packaged legacy localization event, authored SoftMask parent, hierarchy, references, and progression behavior; the project production prefab keeps its `UI_Text` localization and outline settings.
 - Version `0.3.3` replaces the production-dependency Indicator Animator with UI Foundation `ScalePulse` while preserving its component fileID, hierarchy, baseline Transform, art, and nested prefab references.
+- Version `0.3.4` declares `com.actionfit.fonts.maplestory@1.0.0`; its preserved SDF/material GUIDs now resolve from the shared package and use the one canonical Bold source. Do not restore package-local font binaries.
 - Never generate, redraw, synthesize, consolidate, omit, or automatically substitute production art. Project-only MonoBehaviour GUIDs are excluded from the clean-package prefab copy.
 
 ## Refs contract

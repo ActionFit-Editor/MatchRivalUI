@@ -10,12 +10,12 @@
 {
   "dependencies": {
     "com.actionfit.match-rival": "https://github.com/ActionFit-Editor/MatchRival.git#0.2.0",
-    "com.actionfit.match-rival.ui": "https://github.com/ActionFit-Editor/MatchRivalUI.git#0.3.3"
+    "com.actionfit.match-rival.ui": "https://github.com/ActionFit-Editor/MatchRivalUI.git#0.3.4"
   }
 }
 ```
 
-이 패키지는 Content Core 0.2.3, Match Rival 0.2.0, ActionFit Time 1.0.4, ReferenceBinding 0.1.3, UI Foundation 2.0.5와 UGUI 2.0.0에 직접 의존합니다.
+이 패키지는 Content Core 0.2.3, Match Rival 0.2.0, ActionFit Time 1.0.4, ReferenceBinding 0.1.3, UI Foundation 2.0.5, `com.actionfit.fonts.maplestory@1.0.0`과 UGUI 2.0.0에 직접 의존합니다.
 
 ## 독립 실행 흐름
 
@@ -32,6 +32,7 @@
 - 버튼 입력은 `UI_Button`의 포인터 이벤트 API를 사용하며 제거된 native `Button` 접근자에 의존하지 않습니다.
 - `0.3.2`는 매치 단계 튜토리얼 텍스트 5개의 `Maskable`만 비활성화해 프로젝트 `UI_Text` Outline과 SoftMask의 비호환 머티리얼 치환을 우회합니다. 패키지의 기존 로컬라이징 이벤트와 프로젝트의 `UI_Text` 로컬라이징·Outline 설정, 부모 SoftMask, 계층, 참조와 진행 동작은 유지됩니다.
 - `0.3.3`은 production-dependency Indicator의 Animator를 UI Foundation `ScalePulse`로 교체하되 component fileID, 계층, 기준 Transform, 아트와 nested prefab 참조를 유지합니다.
+- `0.3.4`는 Maplestory SDF/material 변형을 shared font package로 GUID 보존 이전하고 canonical Bold source를 사용합니다. prefab의 font/material 참조와 authored 설정은 유지됩니다.
 
 이 패키지는 의도적으로 DOTween, UniTask, Addressables, `Main`, 프로젝트 현지화, 프로젝트 사운드, 프로젝트 프로필, 프로젝트 인벤토리 또는 `Assembly-CSharp` 의존성을 갖지 않습니다.
 
