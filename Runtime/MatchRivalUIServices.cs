@@ -5,49 +5,49 @@ using UnityEngine;
 
 namespace ActionFit.MatchRival.UI
 {
-    public interface IMatchRivalUILocalizer
+    public abstract class MatchRivalUILocalizerBase
     {
-        string Get(string key, string fallback);
+        public abstract string Get(string key, string fallback);
     }
 
-    public interface IMatchRivalUIAudio
+    public abstract class MatchRivalUIAudioBase
     {
-        void Play(string cueId);
+        public abstract void Play(string cueId);
     }
 
-    public interface IMatchRivalUIProfileProvider
+    public abstract class MatchRivalUIProfileProviderBase
     {
-        MatchRivalUIProfile GetPlayerProfile();
+        public abstract MatchRivalUIProfile GetPlayerProfile();
     }
 
-    public interface IMatchRivalUIRewardRenderer
+    public abstract class MatchRivalUIRewardRendererBase
     {
-        string Render(
+        public abstract string Render(
             IReadOnlyList<MatchRivalUIReward> roundRewards,
             IReadOnlyList<MatchRivalUIBoxReward> boxRewards,
-            IMatchRivalUILocalizer localizer);
+            MatchRivalUILocalizerBase localizer);
     }
 
-    public interface IMatchRivalUIAnimation
+    public abstract class MatchRivalUIAnimationBase
     {
-        void ScreenChanged(MatchRivalUIScreen previous, MatchRivalUIScreen current);
-        void ProgressChanged(float previous, float current);
-        void RewardPresented(MatchRivalResult result);
-        void Reset();
+        public abstract void ScreenChanged(MatchRivalUIScreen previous, MatchRivalUIScreen current);
+        public abstract void ProgressChanged(float previous, float current);
+        public abstract void RewardPresented(MatchRivalResult result);
+        public abstract void Reset();
     }
 
-    public interface IMatchRivalUIClockDisplay
+    public abstract class MatchRivalUIClockDisplayBase
     {
-        string Format(TimeSpan remaining);
+        public abstract string Format(TimeSpan remaining);
     }
 
-    public interface IMatchRivalUIViewHost
+    public abstract class MatchRivalUIViewHostBase
     {
-        MatchRivalPresentation Create(MatchRivalPresentation prefab, Transform parent);
-        void Release(MatchRivalPresentation presentation);
+        public abstract MatchRivalPresentation Create(MatchRivalPresentation prefab, Transform parent);
+        public abstract void Release(MatchRivalPresentation presentation);
     }
 
-    public sealed class PassthroughMatchRivalUILocalizer : IMatchRivalUILocalizer
+    public sealed class PassthroughMatchRivalUILocalizer : MatchRivalUILocalizerBase
     {
         public static PassthroughMatchRivalUILocalizer Instance { get; } = new();
 
@@ -55,10 +55,10 @@ namespace ActionFit.MatchRival.UI
         {
         }
 
-        public string Get(string key, string fallback) => fallback ?? string.Empty;
+        public override string Get(string key, string fallback) => fallback ?? string.Empty;
     }
 
-    public sealed class NullMatchRivalUIAudio : IMatchRivalUIAudio
+    public sealed class NullMatchRivalUIAudio : MatchRivalUIAudioBase
     {
         public static NullMatchRivalUIAudio Instance { get; } = new();
 
@@ -66,12 +66,12 @@ namespace ActionFit.MatchRival.UI
         {
         }
 
-        public void Play(string cueId)
+        public override void Play(string cueId)
         {
         }
     }
 
-    public sealed class DefaultMatchRivalUIProfileProvider : IMatchRivalUIProfileProvider
+    public sealed class DefaultMatchRivalUIProfileProvider : MatchRivalUIProfileProviderBase
     {
         public static DefaultMatchRivalUIProfileProvider Instance { get; } = new();
 
@@ -79,11 +79,11 @@ namespace ActionFit.MatchRival.UI
         {
         }
 
-        public MatchRivalUIProfile GetPlayerProfile() =>
+        public override MatchRivalUIProfile GetPlayerProfile() =>
             new("player", "Player", string.Empty, string.Empty);
     }
 
-    public sealed class TextMatchRivalUIRewardRenderer : IMatchRivalUIRewardRenderer
+    public sealed class TextMatchRivalUIRewardRenderer : MatchRivalUIRewardRendererBase
     {
         public static TextMatchRivalUIRewardRenderer Instance { get; } = new();
 
@@ -91,10 +91,10 @@ namespace ActionFit.MatchRival.UI
         {
         }
 
-        public string Render(
+        public override string Render(
             IReadOnlyList<MatchRivalUIReward> roundRewards,
             IReadOnlyList<MatchRivalUIBoxReward> boxRewards,
-            IMatchRivalUILocalizer localizer)
+            MatchRivalUILocalizerBase localizer)
         {
             var builder = new StringBuilder();
             AppendRewards(builder, roundRewards, localizer);
@@ -114,7 +114,7 @@ namespace ActionFit.MatchRival.UI
         private static void AppendRewards(
             StringBuilder builder,
             IReadOnlyList<MatchRivalUIReward> rewards,
-            IMatchRivalUILocalizer localizer)
+            MatchRivalUILocalizerBase localizer)
         {
             if (rewards == null) return;
             for (int index = 0; index < rewards.Count; index++)
@@ -129,7 +129,7 @@ namespace ActionFit.MatchRival.UI
         }
     }
 
-    public sealed class NullMatchRivalUIAnimation : IMatchRivalUIAnimation
+    public sealed class NullMatchRivalUIAnimation : MatchRivalUIAnimationBase
     {
         public static NullMatchRivalUIAnimation Instance { get; } = new();
 
@@ -137,13 +137,13 @@ namespace ActionFit.MatchRival.UI
         {
         }
 
-        public void ScreenChanged(MatchRivalUIScreen previous, MatchRivalUIScreen current) { }
-        public void ProgressChanged(float previous, float current) { }
-        public void RewardPresented(MatchRivalResult result) { }
-        public void Reset() { }
+        public override void ScreenChanged(MatchRivalUIScreen previous, MatchRivalUIScreen current) { }
+        public override void ProgressChanged(float previous, float current) { }
+        public override void RewardPresented(MatchRivalResult result) { }
+        public override void Reset() { }
     }
 
-    public sealed class DefaultMatchRivalUIClockDisplay : IMatchRivalUIClockDisplay
+    public sealed class DefaultMatchRivalUIClockDisplay : MatchRivalUIClockDisplayBase
     {
         public static DefaultMatchRivalUIClockDisplay Instance { get; } = new();
 
@@ -151,7 +151,7 @@ namespace ActionFit.MatchRival.UI
         {
         }
 
-        public string Format(TimeSpan remaining)
+        public override string Format(TimeSpan remaining)
         {
             TimeSpan safe = remaining < TimeSpan.Zero ? TimeSpan.Zero : remaining;
             return safe.TotalDays >= 1d
@@ -160,7 +160,7 @@ namespace ActionFit.MatchRival.UI
         }
     }
 
-    public sealed class DefaultMatchRivalUIViewHost : IMatchRivalUIViewHost
+    public sealed class DefaultMatchRivalUIViewHost : MatchRivalUIViewHostBase
     {
         public static DefaultMatchRivalUIViewHost Instance { get; } = new();
 
@@ -168,7 +168,7 @@ namespace ActionFit.MatchRival.UI
         {
         }
 
-        public MatchRivalPresentation Create(MatchRivalPresentation prefab, Transform parent)
+        public override MatchRivalPresentation Create(MatchRivalPresentation prefab, Transform parent)
         {
             if (prefab != null) return UnityEngine.Object.Instantiate(prefab, parent, false);
             var root = new GameObject("Match Rival Presentation");
@@ -176,7 +176,7 @@ namespace ActionFit.MatchRival.UI
             return root.AddComponent<MatchRivalPresentation>();
         }
 
-        public void Release(MatchRivalPresentation presentation)
+        public override void Release(MatchRivalPresentation presentation)
         {
             if (presentation == null) return;
             if (Application.isPlaying) UnityEngine.Object.Destroy(presentation.gameObject);

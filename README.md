@@ -9,13 +9,13 @@
 ```json
 {
   "dependencies": {
-    "com.actionfit.match-rival": "https://github.com/ActionFit-Editor/MatchRival.git#0.2.0",
-    "com.actionfit.match-rival.ui": "https://github.com/ActionFit-Editor/MatchRivalUI.git#0.3.5"
+    "com.actionfit.match-rival": "https://github.com/ActionFit-Editor/MatchRival.git#0.3.0",
+    "com.actionfit.match-rival.ui": "https://github.com/ActionFit-Editor/MatchRivalUI.git#0.4.0"
   }
 }
 ```
 
-이 패키지는 Content Core 0.2.3, Match Rival 0.2.0, ActionFit Time 1.0.4, ReferenceBinding 0.2.2, UI Foundation 2.0.5, `com.actionfit.fonts.maplestory@1.0.0`과 UGUI 2.0.0에 직접 의존합니다.
+이 패키지는 Content Core 0.3.0, Match Rival 0.3.0, ActionFit Time 2.0.0, ReferenceBinding 0.2.2, UI Foundation 3.0.0, `com.actionfit.fonts.maplestory@1.0.0`과 UGUI 2.0.0에 직접 의존합니다.
 
 ## 독립 실행 흐름
 

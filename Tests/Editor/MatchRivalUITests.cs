@@ -474,47 +474,47 @@ namespace ActionFit.MatchRival.UI.Tests
                 MatchRivalUIButtonModel.Hidden);
         }
 
-        private sealed class RecordingLocalizer : IMatchRivalUILocalizer
+        private sealed class RecordingLocalizer : MatchRivalUILocalizerBase
         {
-            public string Get(string key, string fallback) => "localized:" + fallback;
+            public override string Get(string key, string fallback) => "localized:" + fallback;
         }
 
-        private sealed class RecordingAudio : IMatchRivalUIAudio
+        private sealed class RecordingAudio : MatchRivalUIAudioBase
         {
             internal List<string> Cues { get; } = new();
 
-            public void Play(string cueId) => Cues.Add(cueId);
+            public override void Play(string cueId) => Cues.Add(cueId);
         }
 
-        private sealed class FixedProfileProvider : IMatchRivalUIProfileProvider
+        private sealed class FixedProfileProvider : MatchRivalUIProfileProviderBase
         {
-            public MatchRivalUIProfile GetPlayerProfile() =>
+            public override MatchRivalUIProfile GetPlayerProfile() =>
                 new("player", "Player", string.Empty, string.Empty);
         }
 
-        private sealed class FixedRewardRenderer : IMatchRivalUIRewardRenderer
+        private sealed class FixedRewardRenderer : MatchRivalUIRewardRendererBase
         {
-            public string Render(
+            public override string Render(
                 IReadOnlyList<MatchRivalUIReward> roundRewards,
                 IReadOnlyList<MatchRivalUIBoxReward> boxRewards,
-                IMatchRivalUILocalizer localizer) => "rendered rewards";
+                MatchRivalUILocalizerBase localizer) => "rendered rewards";
         }
 
-        private sealed class RecordingAnimation : IMatchRivalUIAnimation
+        private sealed class RecordingAnimation : MatchRivalUIAnimationBase
         {
             internal int ScreenChanges { get; private set; }
             internal int ProgressChanges { get; private set; }
             internal int RewardPresentations { get; private set; }
             internal int ResetCount { get; private set; }
 
-            public void ScreenChanged(MatchRivalUIScreen previous, MatchRivalUIScreen current) =>
+            public override void ScreenChanged(MatchRivalUIScreen previous, MatchRivalUIScreen current) =>
                 ScreenChanges++;
 
-            public void ProgressChanged(float previous, float current) => ProgressChanges++;
+            public override void ProgressChanged(float previous, float current) => ProgressChanges++;
 
-            public void RewardPresented(MatchRivalResult result) => RewardPresentations++;
+            public override void RewardPresented(MatchRivalResult result) => RewardPresentations++;
 
-            public void Reset() => ResetCount++;
+            public override void Reset() => ResetCount++;
         }
     }
 }

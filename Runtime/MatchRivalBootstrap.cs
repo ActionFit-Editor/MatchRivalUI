@@ -18,8 +18,8 @@ namespace ActionFit.MatchRival.UI
 
         private MatchRivalEngine _engine;
         private MatchRivalPresentation _presentation;
-        private IMatchRivalUIViewHost _viewHost;
-        private IMatchRivalUILocalizer _localizer;
+        private MatchRivalUIViewHostBase _viewHost;
+        private MatchRivalUILocalizerBase _localizer;
         private bool _ownsPresentation;
         private bool _rendering;
         private bool _renderQueued;
@@ -57,13 +57,13 @@ namespace ActionFit.MatchRival.UI
 
         public void InitializeDefault(
             MatchRivalPresentation presentation = null,
-            IMatchRivalUILocalizer localizer = null,
-            IMatchRivalUIAudio audio = null,
-            IMatchRivalUIProfileProvider profileProvider = null,
-            IMatchRivalUIRewardRenderer rewardRenderer = null,
-            IMatchRivalUIAnimation animation = null,
-            IMatchRivalUIClockDisplay clockDisplay = null,
-            IMatchRivalUIViewHost viewHost = null)
+            MatchRivalUILocalizerBase localizer = null,
+            MatchRivalUIAudioBase audio = null,
+            MatchRivalUIProfileProviderBase profileProvider = null,
+            MatchRivalUIRewardRendererBase rewardRenderer = null,
+            MatchRivalUIAnimationBase animation = null,
+            MatchRivalUIClockDisplayBase clockDisplay = null,
+            MatchRivalUIViewHostBase viewHost = null)
         {
             string safeContentId = string.IsNullOrWhiteSpace(contentId)
                 ? DefaultDemoContentId
@@ -83,13 +83,13 @@ namespace ActionFit.MatchRival.UI
         public void Initialize(
             MatchRivalEngine engine,
             MatchRivalPresentation presentation = null,
-            IMatchRivalUILocalizer localizer = null,
-            IMatchRivalUIAudio audio = null,
-            IMatchRivalUIProfileProvider profileProvider = null,
-            IMatchRivalUIRewardRenderer rewardRenderer = null,
-            IMatchRivalUIAnimation animation = null,
-            IMatchRivalUIClockDisplay clockDisplay = null,
-            IMatchRivalUIViewHost viewHost = null)
+            MatchRivalUILocalizerBase localizer = null,
+            MatchRivalUIAudioBase audio = null,
+            MatchRivalUIProfileProviderBase profileProvider = null,
+            MatchRivalUIRewardRendererBase rewardRenderer = null,
+            MatchRivalUIAnimationBase animation = null,
+            MatchRivalUIClockDisplayBase clockDisplay = null,
+            MatchRivalUIViewHostBase viewHost = null)
         {
             if (engine == null) throw new ArgumentNullException(nameof(engine));
             if (IsInitialized) throw new InvalidOperationException("MatchRival UI is already initialized.");
@@ -131,7 +131,7 @@ namespace ActionFit.MatchRival.UI
 
         public static MatchRivalEngine CreateDefaultEngine(string contentId = DefaultDemoContentId)
         {
-            IClock clock = SystemClock.Instance;
+            ClockBase clock = SystemClock.Instance;
             MatchRivalCatalog catalog = CreateDemoCatalog();
             return new MatchRivalEngine(
                 new PlayerPrefsContentStateStore(),
@@ -320,7 +320,7 @@ namespace ActionFit.MatchRival.UI
                 boxRewards);
         }
 
-        private sealed class SingleCatalogResolver : IMatchRivalCatalogResolver
+        private sealed class SingleCatalogResolver : MatchRivalCatalogResolverBase
         {
             private readonly MatchRivalCatalog _catalog;
 
@@ -329,9 +329,9 @@ namespace ActionFit.MatchRival.UI
                 _catalog = catalog ?? throw new ArgumentNullException(nameof(catalog));
             }
 
-            public MatchRivalCatalog Current => _catalog;
+            public override MatchRivalCatalog Current => _catalog;
 
-            public bool TryResolve(
+            public override bool TryResolve(
                 string catalogVersion,
                 string balanceRevision,
                 out MatchRivalCatalog catalog)
@@ -343,11 +343,11 @@ namespace ActionFit.MatchRival.UI
             }
         }
 
-        private sealed class DemoSchedulePolicy : IMatchRivalSchedulePolicy
+        private sealed class DemoSchedulePolicy : MatchRivalSchedulePolicyBase
         {
-            public bool IsEnabled => true;
-            public bool IsActiveDay(DayOfWeek dayOfWeek) => true;
-            public DateTime GetActiveWindowEnd(DateTime now) => now.AddDays(7d);
+            public override bool IsEnabled => true;
+            public override bool IsActiveDay(DayOfWeek dayOfWeek) => true;
+            public override DateTime GetActiveWindowEnd(DateTime now) => now.AddDays(7d);
         }
     }
 }

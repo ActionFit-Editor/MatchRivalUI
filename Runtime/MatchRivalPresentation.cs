@@ -139,12 +139,12 @@ namespace ActionFit.MatchRival.UI
         [SerializeField] private Settings settings = new();
         [SerializeField] private Refs refs = new();
 
-        private IMatchRivalUILocalizer _localizer;
-        private IMatchRivalUIAudio _audio;
-        private IMatchRivalUIProfileProvider _profileProvider;
-        private IMatchRivalUIRewardRenderer _rewardRenderer;
-        private IMatchRivalUIAnimation _animation;
-        private IMatchRivalUIClockDisplay _clockDisplay;
+        private MatchRivalUILocalizerBase _localizer;
+        private MatchRivalUIAudioBase _audio;
+        private MatchRivalUIProfileProviderBase _profileProvider;
+        private MatchRivalUIRewardRendererBase _rewardRenderer;
+        private MatchRivalUIAnimationBase _animation;
+        private MatchRivalUIClockDisplayBase _clockDisplay;
         private Refs _runtimeRefs;
         private MatchRivalUIViewModel _currentModel;
         private MatchRivalUIAction _primaryAction;
@@ -177,12 +177,12 @@ namespace ActionFit.MatchRival.UI
         }
 
         public void Initialize(
-            IMatchRivalUILocalizer localizer = null,
-            IMatchRivalUIAudio audio = null,
-            IMatchRivalUIProfileProvider profileProvider = null,
-            IMatchRivalUIRewardRenderer rewardRenderer = null,
-            IMatchRivalUIAnimation animation = null,
-            IMatchRivalUIClockDisplay clockDisplay = null)
+            MatchRivalUILocalizerBase localizer = null,
+            MatchRivalUIAudioBase audio = null,
+            MatchRivalUIProfileProviderBase profileProvider = null,
+            MatchRivalUIRewardRendererBase rewardRenderer = null,
+            MatchRivalUIAnimationBase animation = null,
+            MatchRivalUIClockDisplayBase clockDisplay = null)
         {
             if (_initialized) return;
             _localizer = localizer ?? PassthroughMatchRivalUILocalizer.Instance;
