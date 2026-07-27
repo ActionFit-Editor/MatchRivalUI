@@ -1,44 +1,26 @@
 # ActionFit Match Rival UI
 
-`com.actionfit.match-rival`을 위한 선택형 프로젝트 중립 UI 계층입니다. 원본 production prefab 21개와 원본 content image 55개, 그 visual dependency를 additive baseline으로 포함합니다. UI Foundation 컴포넌트로 불변 엔진 스냅샷을 표시하고 입력을 공개 엔진 명령으로 다시 전달합니다. 일정, 진행도, 결과, 영속 상태와 보상 상태는 엔진만 소유합니다.
-
-## 설치
-
-각 저장소와 카탈로그 행이 publish된 후 공개 패키지를 함께 설치합니다.
+`com.actionfit.match-rival`을 위한 프로젝트 중립 UI Foundation presentation과 독립 실행 bootstrap입니다. Cat Merge Cafe의 실제 production 프리팹과 이미지는 `Assets/_Project/Content/MatchRival`이 소유합니다.
 
 ```json
-{
-  "dependencies": {
-    "com.actionfit.match-rival": "https://github.com/ActionFit-Editor/MatchRival.git#0.3.0",
-    "com.actionfit.match-rival.ui": "https://github.com/ActionFit-Editor/MatchRivalUI.git#0.4.0"
-  }
-}
+"com.actionfit.match-rival.ui": "https://github.com/ActionFit-Editor/MatchRivalUI.git#0.4.2"
 ```
-
-이 패키지는 Content Core 0.3.0, Match Rival 0.3.0, ActionFit Time 2.0.0, ReferenceBinding 0.2.2, UI Foundation 3.0.0, `com.actionfit.fonts.maplestory@1.0.0`과 UGUI 2.0.0에 직접 의존합니다.
 
 ## 독립 실행 흐름
 
-`Tools/Package/ActionFit Match Rival UI/Create Demo`를 실행하거나 GameObject에 `MatchRivalBootstrap`을 추가합니다. bootstrap은 안전한 PlayerPrefs 서비스와 활성 데모 일정을 제공합니다. Cat Merge 에셋이나 서비스 없이 이벤트 시작, 튜토리얼, 라이벌 매칭, 콩 진행도, 승리/패배 보상, 상자 보상과 이벤트 종료를 확인할 수 있습니다.
+`Tools > Package > ActionFit Match Rival UI > Create Demo`를 실행하거나 GameObject에 `MatchRivalBootstrap`을 추가합니다. 생성 view는 엔진 흐름 진단용이며 Cat production UI를 대체하지 않습니다.
+
+## 자산 경계
+
+- Cat production UI는 로컬 `Assets/_Project/Content/MatchRival` 프리팹과 이미지를 사용합니다.
+- 패키지에는 현재 참조되는 shared Indicator, Resources 아이콘과 그 종속 리소스만 남습니다.
+- 삭제된 production prefab/image baseline을 패키지에 다시 복사하지 않습니다.
 
 ## 연동 계약
 
-- `MatchRivalUIViewModelFactory`를 사용해 공개 엔진 조회 결과를 불변 UI 데이터로 복사합니다.
-- 현지화, 오디오, 프로필, 보상 표시, 애니메이션, 시계 표시와 view host 서비스는 좁은 인터페이스를 통해 주입합니다.
-- `Runtime/Prefabs/`, `Runtime/Art/`, `Runtime/ProductionDependencies/`에는 원본 production visual baseline이 있습니다. 전체 대응과 SHA-256은 `Documentation~/MigrationCoverage.md`와 `AssetProvenance.md`를 확인합니다. 프로젝트는 Addressables 등록, analytics, inventory와 호환 wrapper만 소유합니다.
-- `Refs` 필드는 private 직렬화 하위 Component입니다. 모든 필드는 안정적인 `RequiredReference` 코드와 정확한 이름의 `AutoWireChild`를 사용합니다.
-- AutoWire는 Editor 제작 보조 기능입니다. 런타임 프레젠테이션은 이름으로 자식을 검색하지 않습니다.
-- CI와 audit은 ReferenceBinding 읽기 전용 검증만 사용하며 참조를 적용하거나 저장하면 안 됩니다.
-- 버튼 입력은 `UI_Button`의 포인터 이벤트 API를 사용하며 제거된 native `Button` 접근자에 의존하지 않습니다.
-- `0.3.2`는 매치 단계 튜토리얼 텍스트 5개의 `Maskable`만 비활성화해 프로젝트 `UI_Text` Outline과 SoftMask의 비호환 머티리얼 치환을 우회합니다. 패키지의 기존 로컬라이징 이벤트와 프로젝트의 `UI_Text` 로컬라이징·Outline 설정, 부모 SoftMask, 계층, 참조와 진행 동작은 유지됩니다.
-- `0.3.3`은 production-dependency Indicator의 Animator를 UI Foundation `ScalePulse`로 교체하되 component fileID, 계층, 기준 Transform, 아트와 nested prefab 참조를 유지합니다.
-- `0.3.4`는 Maplestory SDF/material 변형을 shared font package로 GUID 보존 이전하고 canonical Bold source를 사용합니다. prefab의 font/material 참조와 authored 설정은 유지됩니다.
-- `0.3.5`는 `com.actionfit.referencebinding@0.2.2`의 package-owned Editor pump를 사용하고 enqueue 전용 `OnValidate`를 제거합니다. prefab, 직렬화 참조, GUID와 런타임 동작은 변경하지 않습니다.
+- `MatchRivalUIViewModelFactory`는 엔진 조회 결과를 불변 UI 데이터로 복사합니다.
+- `Refs` 필드는 private 직렬화 하위 Component이며 `RequiredReference`와 `AutoWireChild` 계약을 사용합니다.
+- 일정, 진행도, 결과, 영속 상태와 보상 상태는 엔진이 소유합니다.
+- DOTween, UniTask, Addressables, `Main`, 프로젝트 현지화와 `Assembly-CSharp` 의존성을 추가하지 않습니다.
 
-이 패키지는 의도적으로 DOTween, UniTask, Addressables, `Main`, 프로젝트 현지화, 프로젝트 사운드, 프로젝트 프로필, 프로젝트 인벤토리 또는 `Assembly-CSharp` 의존성을 갖지 않습니다.
-
-원본 이미지를 AI 생성, 합성, placeholder, 근사 redraw, consolidation 또는 자동 substitute로 바꾸는 것은 금지됩니다. clean-package prefab은 project-only MonoBehaviour GUID를 보유하지 않습니다.
-
-## 검증 및 릴리스
-
-EditMode 어셈블리 `com.actionfit.match-rival.ui.Editor.Tests`, Custom Package Manager 계약 검증기와 ReferenceBinding 읽기 전용 검증을 실행합니다. 저장소 생성, 태그, 카탈로그 행 및 publish는 각각 별도로 승인하는 수동 단계입니다.
+`0.4.2`는 실제 게임에서 참조하지 않는 패키지 production 프리팹과 중복 이미지를 제거하고 런타임 참조가 확인된 shared dependency만 보존합니다.
